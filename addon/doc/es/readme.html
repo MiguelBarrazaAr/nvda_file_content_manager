@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File Content Manager</title>
+</head>
+<body>
+<h1>File Content Manager</h1>
+<p>File Content Manager permite copiar, ver y escribir contenido de archivos de texto desde el Explorador de Windows usando comandos de NVDA.</p>
+<h2>Compatibilidad</h2>
+<ul>
+<li>Minimo: NVDA 2026.1</li>
+<li>Ultima version probada: NVDA 2026.1</li>
+</ul>
+<h2>Comandos</h2>
+<p>Todos los comandos estan disponibles para reasignar desde NVDA &gt; Preferencias &gt; Gestos de entrada. Aparecen en una sola categoria, File Content Manager, con descripciones prefijadas por grupo: Archivos, Portapapeles y Rutas.</p>
+<table>
+<thead>
+<tr><th>Atajo</th><th>Accion</th></tr>
+</thead>
+<tbody>
+<tr><td>NVDA+control+shift+c</td><td>Archivos: copia el contenido del archivo enfocado.</td></tr>
+<tr><td>NVDA+control+alt+c</td><td>Archivos: agrega el contenido del archivo al portapapeles.</td></tr>
+<tr><td>NVDA+control+shift+v</td><td>Archivos: sobrescribe el archivo con el portapapeles.</td></tr>
+<tr><td>NVDA+control+alt+v</td><td>Archivos: agrega el portapapeles al final del archivo.</td></tr>
+<tr><td>NVDA+shift+espacio</td><td>Archivos: muestra el contenido del archivo.</td></tr>
+<tr><td>NVDA+control+shift+f</td><td>Archivos: crea un archivo en la carpeta actual con el contenido del portapapeles.</td></tr>
+<tr><td>NVDA+alt+a</td><td>Portapapeles: abre un dialogo para escribir texto y copiarlo al portapapeles.</td></tr>
+<tr><td>NVDA+control+shift+a</td><td>Portapapeles: abre un dialogo para escribir texto y agregarlo al portapapeles.</td></tr>
+<tr><td>NVDA+control+shift+z</td><td>Portapapeles: muestra el texto del portapapeles.</td></tr>
+<tr><td>NVDA+control+shift+r</td><td>Rutas: copia la ruta del elemento enfocado.</td></tr>
+<tr><td>NVDA+control+alt+r</td><td>Rutas: copia la ruta con barras inclinadas.</td></tr>
+<tr><td>NVDA+control+shift+d</td><td>Rutas: abre la ruta del portapapeles.</td></tr>
+</tbody>
+</table>
+<h2>Limitaciones</h2>
+<p>Las operaciones de lectura y escritura usan UTF-8. Si el archivo esta en otra codificacion, el complemento no lo modifica y muestra un mensaje de error.</p>
+</body>
+</html>

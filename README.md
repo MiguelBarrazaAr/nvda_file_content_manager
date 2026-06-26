@@ -1,58 +1,72 @@
-# Gestor de contenido de archivos para NVDA
+# File Content Manager
 
-**Versión 1.2**
+Complemento global de NVDA para gestionar contenido de archivos de texto desde el Explorador de Windows.
 
-## Descripción
+## Estado
 
-Este complemento para NVDA permite gestionar de forma ágil y accesible el texto y las rutas de archivos de texto seleccionados en el Explorador de Windows, así como crear nuevos archivos y abrir rutas directamente desde atajos de teclado.  
-Desarrollado por **Miguel Barraza**, el plugin ofrece una serie de comandos que facilitan el flujo de trabajo sin necesidad de cambiar de aplicación ni usar menús contextuales.
+- Version: 2.0.0
+- Compatibilidad minima: NVDA 2026.1
+- Ultima version probada declarada: NVDA 2026.1
+- Idioma base: espanol
 
-## Funcionalidades
+## Funciones
 
-- Copiar y pegar el contenido completo de un archivo seleccionado.  
-- Añadir (“append”) texto de un archivo al portapapeles o viceversa, con inserción automática de saltos de línea.  
-- Sobrescribir archivos con el contenido del portapapeles.  
-- Crear un nuevo archivo con nombre personalizado y pegar en él el contenido del portapapeles.  
-- Copiar la ruta de un archivo en formato Windows (`C:\ruta\al\archivo.txt`) o en formato tipo Linux (`c:/ruta/al/archivo.txt`).  
-- Mostrar en el Visor de NVDA el contenido de un archivo o del portapapeles.  
-- Abrir directamente en el Explorador de Windows la ruta almacenada en el portapapeles.
+- Copiar el contenido completo del archivo enfocado.
+- Agregar el contenido de un archivo al texto ya existente en el portapapeles.
+- Sobrescribir un archivo con el texto del portapapeles.
+- Agregar el texto del portapapeles al final de un archivo.
+- Ver el contenido de un archivo o del portapapeles en el visor navegable de NVDA.
+- Escribir texto en un cuadro simple para copiarlo o agregarlo al portapapeles.
+- Copiar rutas en formato Windows o con barras inclinadas.
+- Crear un archivo en la carpeta actual usando el contenido del portapapeles.
+- Abrir una ruta tomada desde el portapapeles.
 
-## Instalación
+## Atajos
 
-1. Descarga el archivo desde [este enlace](https://github.com/MiguelBarrazaAr/fileContentManager/releases/download/v1.2/FileContentManager.nvda-addon).  
-2. Eejecuta pulsando enter sobre el archivo FileContentManager.nvda-addon y sigue las instrucciones para instalar.  
-3. Reinicia NVDA.
+Todos los comandos usan `scriptHandler.script`, tienen descripcion y quedan disponibles para reasignar desde NVDA > Preferencias > Gestos de entrada. En esa lista aparecen en una sola categoria, `File Content Manager`, con descripciones prefijadas por grupo: `Archivos:`, `Portapapeles:` y `Rutas:`.
 
-## Atajos de teclado
+| Atajo | Accion |
+| --- | --- |
+| NVDA+control+shift+c | Archivos: copia el contenido del archivo enfocado. |
+| NVDA+control+alt+c | Archivos: agrega el contenido del archivo enfocado al portapapeles. |
+| NVDA+control+shift+v | Archivos: sobrescribe el archivo enfocado con el portapapeles. |
+| NVDA+control+alt+v | Archivos: agrega el portapapeles al final del archivo enfocado. |
+| NVDA+shift+espacio | Archivos: muestra el contenido del archivo enfocado. |
+| NVDA+control+shift+f | Archivos: crea un archivo en la carpeta actual con el contenido del portapapeles. |
+| NVDA+alt+a | Portapapeles: abre un dialogo para escribir texto y copiarlo al portapapeles. |
+| NVDA+control+shift+a | Portapapeles: abre un dialogo para escribir texto y agregarlo al portapapeles. |
+| NVDA+control+shift+z | Portapapeles: muestra el texto del portapapeles. |
+| NVDA+control+shift+r | Rutas: copia la ruta del elemento enfocado. |
+| NVDA+control+alt+r | Rutas: copia la ruta con barras inclinadas. |
+| NVDA+control+shift+d | Rutas: abre la ruta guardada en el portapapeles. |
 
-| Atajo                       | Acción                                                                                 |
-| --------------------------- | -------------------------------------------------------------------------------------- |
-| NVDA + Control + Shift + C   | Copia al portapapeles todo el contenido del archivo seleccionado                       |
-| NVDA + Control + Alt + C     | Añade al portapapeles el contenido del archivo (append), con salto de línea previo     |
-| NVDA + Control + Shift + V   | Sobrescribe el archivo seleccionado con el texto del portapapeles                     |
-| NVDA + Control + Alt + V     | Añade al final del archivo seleccionado el texto del portapapeles, con salto de línea |
-| NVDA + Shift + Espacio       | Muestra en el Visor de NVDA el contenido completo del archivo seleccionado              |
-| NVDA + Alt + A              | Abre diálogo para escribir texto y copia al portapapeles                               |
-| NVDA + Control + Shift + A   | Abre diálogo para escribir texto y añade al portapapeles con salto de línea           |
-| NVDA + Control + Shift + R   | Copia al portapapeles la ruta del archivo en formato Windows                           |
-| NVDA + Alt + Control + Shift + R | Copia al portapapeles la ruta del archivo en formato Linux (barras `/`)          |
-| NVDA + Control + Shift + F   | Crea un nuevo archivo (nombre personalizado) en la carpeta del foco y pega el portapapeles |
-| NVDA + Control + Shift + D   | Abre en el Explorador la ruta que hay en el portapapeles                               |
-| NVDA + Control + Shift + Z   | Muestra en el Visor de NVDA el texto que hay actualmente en el portapapeles             |
+## Estructura
 
-## Ejemplo de uso
+```text
+addon/
+  globalPlugins/fileContentManager/
+    __init__.py
+    explorer.py
+    text_ops.py
+    version.py
+  doc/es/readme.md
+buildVars.py
+build_addon.py
+manifest.ini.tpl
+```
 
-1. Selecciona `notas.txt` en tu carpeta de proyecto en el Explorador de Windows.  
-2. Pulsa **NVDA+Control+Shift+C** para copiar todo su contenido.  
-3. Abre tu editor y pega con **Ctrl+V**.  
-4. Modifica o añade texto en el portapapeles con **NVDA+Control+Shift+A** sin salir del explorador.  
-5. Para crear un nuevo archivo `resumen.txt` y pegar en él lo copiado, pulsa **NVDA+Control+Shift+F**, escribe `resumen.txt` y acepta.
+## Build
 
-## Autor
+Desde esta carpeta:
 
-Miguel Barraza (<miguelbarraza2015@gmail.com>)
+```powershell
+python build_addon.py
+```
 
-## Descarga
+El paquete queda en `build/fileContentManager-2.0.0.nvda-addon`.
 
-Descarga la última versión desde aquí:  
-[fileContentManagerv-1.2.nvda-addon](https://github.com/MiguelBarrazaAr/fileContentManager/releases/download/v1.2/FileContentManager.nvda-addon)
+## Notas de compatibilidad
+
+Validado contra documentacion de NVDA 2026.1.1. El complemento usa `scriptHandler.script`, `ui.browseableMessage`, `gui.runScriptModalDialog` y acceso COM de Windows Shell para resolver el elemento enfocado en Explorer.
+
+El complemento trabaja con archivos de texto UTF-8. Si un archivo usa otra codificacion, NVDA informa que no pudo decodificarlo.
